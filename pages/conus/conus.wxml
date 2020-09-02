@@ -1,0 +1,13 @@
+<!-- 关于我们的页面 -->
+<view class="aboutUs">
+  <view class="aboutUs1">资和信控股集团创立于1997年，是一家长期致力于金融及零售服务领域的大型集团化公司。</view>
+  <view class="aboutUs1">资和信旗下拥有多家具有专业资质的金融服务公司,为客户提供互联网支付、预付卡发行与受理、银行卡收单、移动电话支付、融资担保等服务。截至当前，资和信在全国范围内设立有33家分支机构，支付业务服务覆盖全国28个省100多个城市。</view>
+  <view class="aboutUs1">	资和信秉承“凝聚内敛、中和坚韧”的企业文化为客户提供方便、快捷、满意的金融服务。</view>
+  <view class="aboutUsScode">
+    <image src="../images/qrcode.png"></image>
+    <view>下载资和信APP</view>
+    <view>购买大牌卡享受更多优惠</view>
+  </view>
+
+
+</view> 

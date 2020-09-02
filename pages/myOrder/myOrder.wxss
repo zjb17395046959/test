@@ -1,0 +1,101 @@
+/* 我的订单页面布局 */
+.myOrder{
+  width: 100%;
+  height: auto;
+  padding-top:10rpx ;
+  padding-bottom: 10rpx;
+  background: #E6ECF4;
+  font-family: PingFangSC-Regular;
+}
+.myOrderList{
+  background: #fff;
+  padding: 0 30rpx 0 20rpx;
+  margin-bottom: 20rpx;
+}
+.myOrderLisTop{
+  height: 80rpx;
+  display: flex;
+  line-height: 80rpx;
+  font-size: 24rpx;
+  border-bottom: 1px solid #DCDCDC;
+}
+.myOrderLisTop>view:nth-child(1){
+  color: #646464;
+}
+.myOrderLisTop>view:nth-child(2){
+  flex: 1;
+  padding-left: 30rpx;
+}
+.myOrderLisTop>view:nth-child(3){
+  font-size: 26rpx;
+  color: #4A90E2;
+}
+/* 2 */
+.myOrderLisMiddle{
+  height: 180rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #DCDCDC;
+}
+.myOrderLisMiddle>image{
+  width:180rpx;
+  height: 116rpx;
+}
+.myOrderLisMiddle1{
+  flex: 1;
+  padding-left: 38rpx;
+  font-size: 30rpx;
+}
+.myOrderLisMiddle1>view:nth-child(2){
+  color: #646464;
+  margin-top: 28rpx;
+}
+/* 查看卡信息布局 */
+.seeMessage{
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #4A90E2;
+  justify-content: center;
+}
+.seeMessage>image{
+  width: 20rpx;
+  height: 12rpx;
+  margin-left: 22rpx;
+}
+.seeMessage1{
+  font-size: 26rpx;
+  background: #E6ECF4 ;
+  padding:0 54rpx 0 44rpx;
+  
+}
+.seeMessageBorder{
+  padding: 38rpx 0 28rpx;
+  border-bottom: 1rpx solid #fff;
+}
+.seeMessage2{
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-bottom: 32rpx;
+}
+.seeMessage2>view:nth-child(2){
+  width: 400rpx;
+  background: #fff;
+  color: #6D7278;
+  text-align: center;
+  border-radius: 8rpx;
+  margin: 0 34rpx 0 12rpx ;
+}
+.seeMessage2>view:nth-child(3){
+  background: #fff;
+  border-radius: 8rpx;
+  width: 126rpx;
+  text-align: center;
+}
+/* 上拉加载布局 */
+.showCardSl{
+  text-align: center;
+  color: #000;
+}

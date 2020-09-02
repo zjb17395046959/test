@@ -1,0 +1,367 @@
+/* 大牌卡首页 */
+page{
+  height: 100%;
+}
+.index{
+  width: 100%;
+  height: 100%;
+  background-color: #EEF2F7;
+  display: flex;
+  flex-direction: column;
+  font-family: PingFangSC-Medium;
+}
+/*  头部*/
+.indexNav{
+  height: 132rpx;
+  width: 100%;
+  background-color: #fff;
+  font-size: 40rpx;
+  padding-left: 40rpx;
+  line-height: 132rpx;
+  font-weight: bold;
+}
+/* 列表 */
+.indexListBox{
+  /* flex: 1; */
+  /* height: 80%; */
+  margin-top:6rpx;
+  /* background-color: #fff; */
+}
+.indexList{
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+/* 左边列表 */
+.indexListLeft{
+  width: 230rpx;
+  height: 100%;
+  background-color:#EEF2F7;
+  overflow: auto;
+}
+.indexListLeftScroll{
+  width:100%;
+  height: 100%;
+}
+
+/* 清楚左边列表的滚动条 */
+::-webkit-scrollbar{
+  display: none;
+}
+.leftScroll1{
+  font-family: PingFangSC-Regular;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  font-size: 26rpx;
+  color: #646464;
+  border-bottom: 1rpx solid #fff;
+  position: relative;
+}
+/* 左边右上角的定位 布局*/
+.leftScroll2 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 28rpx;
+  line-height: 28rpx;
+  font-size: 20rpx;
+  color: #fff;
+  /* background-color: #FD40BB; */
+  padding: 0 8rpx;
+}
+/* 左边为美团的时候，右上角的定位隐藏 */
+.mtNone{
+  display: none;
+}
+.leftScrollBorder{
+  border: none;
+  /* margin-bottom: 16rpx; */
+}
+/* 点击切换样式 */
+.active{
+  background-color: #fff;
+  font-weight: bold;
+  color: #000;
+}
+/* 右边的列表 */
+.indexListRight{
+  background-color: #fff;
+  width:69% ;
+  height: 100%;
+  overflow: auto;
+}
+/* 上部分 */
+.rightScrollTop{
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 34rpx;
+  padding-top: 52rpx;
+}
+.rightScrollTop>image{
+  width: 240rpx;
+  height: 150rpx;
+}
+.rightScrollTop1{
+  font-size: 36rpx;
+  font-weight: bold;
+  margin: 13rpx 0 2rpx;
+}
+.rightScrollTop1>text:nth-child(1){
+  color: #F9404A ;
+}
+.rightScrollTop1>text:nth-child(2){
+  color: #F9404A ;
+  font-size: 52rpx;
+}
+.rightScrollTop1>text:nth-child(3){
+  font-size: 52rpx;
+}
+.rightScrollTop2{
+  color: #9B9B9B;
+  font-size: 26rpx;
+  /* display: flex; */
+}
+.rightScrollTop2>image{
+  width: 12rpx;
+  height: 20rpx;
+  /* 将图片旋转 */
+  transform: rotate(180deg);
+}
+/* 中部 */
+.righScrollMiddle{
+  margin-bottom: 26rpx;
+}
+.rightScrollMiddle1{
+  margin-left: 12rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+}
+.rightScrollMiddle2{
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  width: 100%;
+}
+.rightScrollMiddle3{
+  width: 222rpx;
+  height: 114rpx;
+  border: 1rpx solid #d2d2d2;
+  border-radius: 6rpx;
+  text-align: center;
+  margin-left: 22rpx;
+  margin-bottom: 22rpx;
+  color:  #d2d2d2;
+}
+.rightScrollMiddle3>view:nth-child(1){
+  font-size: 36rpx;
+  margin-top: 16rpx;
+}
+.rightScrollMiddle3>view:nth-child(2){
+  font-size: 24rpx;
+}
+.activeMiddle{
+  border: 1px solid #FF7D41 ;
+  color: #FF7D41 ;
+  background: #FFF5F0;
+}
+/* 数量 */
+.rightScrollBottom>view:nth-child(1){
+  font-size: 24rpx;
+  margin-left: 22rpx;
+}
+.rightScrollBottom1{
+  margin: 16rpx 0 0 22rpx;
+}
+.rightScrollBottom1>text{
+  display: inline-block;
+  width:84rpx;
+  height: 84rpx;
+  border: 1rpx solid #939393;
+  font-size:44rpx ;
+  text-align: center;
+  line-height: 84rpx;
+  color: #939393;
+}
+.rightScrollBottom1>text:nth-child(1){
+  border-radius: 8rpx 0 0 8rpx;
+}
+.rightScrollBottom1>text:nth-child(3){
+  border-radius:0 8rpx 8rpx 0;
+}
+.rightScrollBottom1>text:nth-child(2){
+  border-left: none;
+  border-right: none;
+  width: 134rpx;
+  color: #000;
+}
+/* 底部布局 */
+.indexFiexd{
+  width: 100%;
+  height: 110rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -6rpx 6rpx rgba(184,184,184,.5);
+}
+.indexFiexd1{
+  display: flex;
+  font-size: 30rpx;
+  font-family: PingFangSC-Regular;
+}
+.indexFiexd1>view:nth-child(2){
+  font-size: 24rpx;
+  font-family: PingFangSC-Medium;
+  color: #FD404A;
+  margin-left: 14rpx;
+  margin-top: 6rpx;
+}
+.btn{
+  width: 248rpx;
+  height: 80rpx;
+  background-color: #FD404A ;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 12rpx;
+}
+/* 点击更多服务布局 */
+.rightMore{
+  width: 100%;
+  text-align: center;
+  padding-top: 72rpx;
+}
+.rightMore1{
+  width: 300rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  background-color: #0F85D4;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 58rpx;
+}
+.rightMore1>image{
+  width: 30rpx;
+  height: 35rpx;
+  margin-right: 27rpx;
+}
+.rightMore1>view{
+  font-family: PingFangSC-Regular;
+  font-size: 30rpx;
+}
+.rightMore2>image{
+  width: 46rpx;
+  height: 40rpx;
+  margin-right: 14rpx;
+}
+.rightMore3>image{
+  width: 36rpx;
+  height: 36rpx;
+  margin-right: 12rpx;
+}
+/* 扫码 */
+.rightSm{
+  width: 100%;
+  margin-top: 148rpx;
+  text-align: center;
+}
+.rightSm>image{
+  width: 196rpx;
+  height: 196rpx;
+  margin-bottom: 34rpx;
+}
+.rightSm>view{
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+}
+/* 点击付款，显示弹框布局 */
+.paymentBox{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.payment{
+  width: 500rpx;
+  height: 342rpx;
+  background: #fff;
+  border-radius: 9rpx;
+  padding: 20rpx 40rpx 34rpx;
+}
+.payment1{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 18rpx;
+}
+.payment1>view:nth-child(1){
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  color: #646464;
+}
+.payment1>view:nth-child(2){
+  font-size: 40rpx;
+  color: #D8D8D8;
+  width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  font-weight: bold;
+  text-align: center;
+}
+.payment2>input{
+  width: 100%;
+  height: 48rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 1px solid  #D2D2D2;
+  font-size: 30rpx;
+}
+.payment3{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 96rpx;
+  border-bottom: 1px solid  #D2D2D2 ;
+}
+.payment3>input{
+  flex: 1;
+  font-size: 30rpx;
+}
+.payment3>view{
+  font-size: 28rpx;
+  color:#FD404A ;
+  font-family: PingFangSC-Regular;
+  border: 1px solid #FD404A;
+  border-radius: 2rpx;
+  width: 184rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  text-align: center;
+}
+.payment3 .graYan{
+  color: #ccc;
+  border: 1px solid #ccc;
+}
+.payBtn{
+  width: 100%;
+  height: 80rpx;
+  background:  #FD404A;
+  color: #fff;
+  font-size: 30rpx;
+  margin-top: 34rpx;
+  border-radius: 14rpx;
+  text-align: center;
+  line-height: 80rpx;
+}

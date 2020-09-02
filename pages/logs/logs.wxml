@@ -1,0 +1,10 @@
+<!-- 如何使用页面 -->
+<view class="use">
+  <!-- 上部分 -->
+  <view class="use1">
+    <image src="../images/qrcode.png"></image>
+    <view>下载资和信APP</view>
+    <view>可享受电子卡赠送、商卡通支付等更多服务</view>
+  </view>
+
+</view>

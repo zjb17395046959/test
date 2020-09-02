@@ -1,0 +1,125 @@
+<!-- 大牌卡首页 -->
+<view class="index">
+  <!-- 头部 -->
+  <view class="indexNav">大牌卡推荐 各大平台 省小钱</view>
+  <!-- 列表 -->
+  <view class="indexListBox" style="height:{{he}}">
+  <!-- 列表1 -->
+    <view class="indexList">
+    <!-- 左侧列表 -->
+      <view class="indexListLeft">
+        <scroll-view scroll-y class="indexListLeftScroll">
+        <block wx:for="{{list.data.brandList}}" wx:key="index">
+        <view class="leftScroll1 {{item.brand_id==pid?'active':''}} " bindtap="toggle" data-id="{{item.brand_id}}">
+           <view class="{{item.brandRebate==100?'mtNone':'leftScroll2'}}" style="background:{{item.color}}">{{item.brandRebate==100?'':item.brandRebate+'折'}}</view>
+       
+          {{item.brand_name}}
+        </view>
+        </block>
+        <view class="leftScroll1 leftScrollBorder {{obj.brand_id==pid?'active':''}}" bindtap="toggle" data-id="{{obj.brand_id}}">
+        <view class="leftScroll2" style="background:{{obj.color}}">我的订单</view>
+        {{obj.brand_name}}
+        </view>
+        </scroll-view>
+      
+      </view>
+    <!-- 右侧列表 -->
+      <view class="indexListRight">
+        <scroll-view scroll-y class="indexListLeftScroll">
+          <view wx:if="{{!isShow}}">
+            <block wx:for="{{arr}}" wx:key="index">
+          <!-- 广告位 -->
+          <view class="rightScrollTop">
+            <image src="{{item.src}}"></image>
+            <view class="rightScrollTop1">花 <text>￥</text> <text>{{newPrice}}</text> 买 ￥<text>{{oldPrice}}</text> </view>
+            <view class="rightScrollTop2" bindtap="use">如何使用
+            <image src="../images/right.png"></image>
+             </view>
+          </view>
+          <!--右边的金额 -->
+          <view class="righScrollMiddle">
+            <view class="rightScrollMiddle1">请选择购卡面值:</view>
+             <view class="rightScrollMiddle2">
+            <block wx:for="{{item.goodsList}}" wx:for-item="it" wx:for-index="inx" wx:key="inx">
+             
+               <view class="rightScrollMiddle3 {{num==inx?'activeMiddle':''}}" bindtap="recharge" data-index="{{inx}}" data-content="{{it}}">
+                 <view>{{it.oldPrice}}元</view>
+                  <view>售价{{it.newPrice}}元</view>
+               </view>
+              
+            </block>
+            </view>
+          </view>
+          <!-- 右边列表的数量 -->
+          <view class="rightScrollBottom">
+            <view>请选择购卡的张数:</view>
+            <view class="rightScrollBottom1"> <text bindtap="jian">-</text> <text>{{number}}</text> <text bindtap="jia">+</text></view>
+          </view>
+          
+          </block>
+          </view>
+          <!-- 更多服务的页面布局 -->
+         <view wx:if="{{isShow}}">
+         <!-- 订单，客服，关于 -->
+            <view class="rightMore">
+              <view class="rightMore1" bindtap="myOrder">
+                <image src="../images/order.png"></image>
+                <view >我的订单</view>
+              </view>
+              <view class="rightMore1 rightMore2" bindtap="kf">
+                <image src="../images/kf.png"></image>
+                <view >联系客服</view>
+              </view>
+              <view class="rightMore1 rightMore3" bindtap="aboutUs">
+                <image src="../images/about.png"></image>
+                <view >关于我们</view>
+              </view>
+            </view>
+            <!-- 扫码 -->
+            <view class="rightSm">
+              <image src="../images/qrcode.png"></image>
+              <view>下载资和信APP</view>
+              <view>购买大牌卡享受更多优惠</view>
+            </view>
+         </view>
+        </scroll-view>
+      
+      </view>
+    
+    
+    </view>
+  
+  </view>
+  <!-- 底部的导航栏 -->
+  <view class="indexFiexd" wx:if="{{!isShow}}">
+    <view class="indexFiexd1">
+      <view>合计：{{add}}元</view>
+      <view>优惠{{youHui}}元</view>
+    </view>
+    <view class="btn" bindtap="goPay">去付款</view>
+  </view>
+  <!-- 点击付款，弹出 -->
+  <view class="paymentBox" wx:if="{{isTan}}">
+    <view class="payment">
+
+      <view class="payment1">
+        <view>输入手机号:</view>
+        <view bindtap="close">x</view>
+      </view>
+      <view class="payment2">
+        <input placeholder="请输入手机号" type="number" maxlength="11" bindinput="getTel"></input>
+      </view>
+      <view class="payment3">
+        <input placeholder="请输入验证码" type="number" maxlength="6" bindinput="yanValue"></input>
+        <view catchtap="yan" wx:if="{{!isGray}}"
+        >{{yan}}</view>
+        <view class="graYan" wx:if="{{isGray}}">{{miao}}s</view>
+      </view>
+      <view class="payBtn" bindtap="submit">提交并支付</view>
+    </view>
+
+  </view>
+
+
+</view>
+

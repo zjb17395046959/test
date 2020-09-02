@@ -1,0 +1,33 @@
+/* pages/kf/kf.wxss */
+page{
+  height: 100%;
+}
+.kf{
+  width: 100%;
+  height: 100%;
+}
+.kfNav{
+  width: 60%;
+  height: 86%;
+  text-align: center;
+  padding-top: 14%;
+  margin: 0 auto;
+}
+.kfNav>image{
+  width: 160rpx;
+  height: 140rpx;
+  margin-bottom: 54rpx;
+}
+.kfNav1{
+  text-align: left;
+  margin-bottom: 20rpx;
+  font-size: 28rpx;
+}
+.kfNav1>text{
+  color:  #0F85D4;
+}
+.kfC{
+  font-size: 24rpx;
+  color: #646464;
+  text-align: center;
+}

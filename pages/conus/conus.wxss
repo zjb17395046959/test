@@ -1,0 +1,29 @@
+/* pages/conus/conus.wxss */
+page{
+  height: 100%;
+}
+.aboutUs{
+  width: 94%;
+  height: 94%;
+  padding: 40rpx 20rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+.aboutUs1{
+  text-indent: 2em;
+  margin-bottom: 34rpx;
+}
+/* 扫码 */
+.aboutUsScode{
+  width: 100%;
+  margin-top: 230rpx;
+  text-align: center;
+}
+.aboutUsScode>image{
+  width: 196rpx;
+  height: 196rpx;
+  margin-bottom: 34rpx;
+}
+.aboutUsScode>view{
+  font-size: 28rpx;
+}

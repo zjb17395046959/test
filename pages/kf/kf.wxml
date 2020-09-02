@@ -1,0 +1,9 @@
+<!-- 客服页面 -->
+<view class="kf">
+  <view class="kfNav">
+    <image src="../images/lxkf.png"></image>
+       <view class="kfNav1">客服电话: <text bindtap="tel">95159</text></view>
+     <view class="kfNav1">客服邮箱: <text selectable='true'>kefu@zihexin.com</text ></view>
+  </view>
+  <view class="kfC">有问题请随时与我们联系，看到反馈后我们会尽快为您解决！</view>
+</view>

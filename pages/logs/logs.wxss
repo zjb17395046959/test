@@ -1,0 +1,23 @@
+/* 如何使用页面 */
+.use{
+  width: 100%;
+  height: 100%;
+}
+.use1{
+  width: 100%;
+  background-color: #EEF2F7;
+  text-align: center;
+  padding:40rpx 0 30rpx 0 ;
+}
+.use1>image{
+  width: 196rpx;
+  height: 196rpx;
+  margin-bottom: 34rpx;
+}
+.use1>view{
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+.use1>view:nth-child(2){
+  font-weight: bold;
+}

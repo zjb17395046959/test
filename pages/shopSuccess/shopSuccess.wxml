@@ -1,0 +1,67 @@
+<!-- 购买成功页面 -->
+<view class="shopSuccess">
+<!-- 1 -->
+  <!-- <view> -->
+    <!-- tou -->
+  <!-- <view class="shopSuccessTo">
+    <view>恭喜您购买成功！</view>
+    <view class="shopSuccessTo1">请稍后前往 【活动首页-更多服务-<text>我的订单</text>】 查看</view>
+  </view> -->
+<!-- 中 -->
+  <!-- <view class="shopSuccessTo2">
+    <view>如何找到我的订单？</view>
+    <image src="../images/bor.png"></image>
+    <view>如何查看卡号和密码？</view>
+    <image src="../images/bot.png"></image> -->
+
+    <!-- 扫码 -->
+    <!-- <view class="rightSm">
+      <image src="../images/qrcode.png"></image>
+      <view>下载资和信APP</view>
+      <view>购买大牌卡享受更多优惠</view>
+    </view>
+  </view>
+  
+  </view> -->
+  <!-- 2 -->
+    <view class="shopSuccessTwo">
+    <!-- top -->
+      <view>恭喜您购买成功！</view>
+      <!-- list -->
+      <view class="shopSuccessMsg">
+      <!-- 上 -->
+          <view class="shopSuccessMsg1">
+            <view class="shopSuccessMsg2">
+              <view >盒马鲜生电子卡200元</view>
+              <view>有效期至：2022-02-28</view>
+            </view>
+            <view class="shopSuccessMsg3" bindtap="user">
+              使用说明 
+              <image src="../images/right.png"></image>
+            </view>
+          </view>
+      <!-- 下 -->
+          <view class="shopSuccessMsgCard">
+              <!-- <view class="seeMessageBorder"> -->
+              <view class="shopSuccessMsgCardOne">
+              <view>卡号</view>
+              <view>0000 0000 0000 0000</view>
+              <view bindtap="fz">复制</view>
+            </view>
+            <view class="shopSuccessMsgCardOne">
+              <view>密码</view>
+              <view>0000000</view>
+              <view bindtap="fz1" >复制</view>
+            </view>
+            <!-- </view> -->
+          </view>
+      <!-- 列表结束 -->
+      </view>
+
+      <view class="shopSuccesShow">请保存卡号和密码，或可在 <text>【我的订单】</text>中查看</view>
+      <image src="../images/bg.png" class="bg"></image>
+    
+    </view>
+    <!-- 结束 -->
+</view>
+
