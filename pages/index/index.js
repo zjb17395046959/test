@@ -25,7 +25,8 @@ Page({
     telVal:'',//手机号值
     yanVal:'',//验证码的值
     miao:'',//获取验证码的秒数
-    isClick:false
+    isClick:false,
+    code:''//用户登录的code
   },
   // 点击弹框的x按钮，关闭弹框
   close(){
@@ -41,15 +42,72 @@ Page({
   // 点击去付款，显示提示框
   goPay(){
     // if(!that.data.list.token){
-      that.setData({
-        isTan:true
-      })
+      // that.setData({
+      //   isTan:true
+      // })
     // }else{
     //   wx.showToast({
     //     title: '有token值',
     //   })
     // }
+    // wx.login({
+    //   success(res){//获取code
+    //     console.log(res);
+        wx.request({
+          url: 'http://10.6.4.154:8081/weChat/testpay',
+          data:{
+            code:that.data.code,
+            amount:that.data.add
+          },
+          success(res1){
+            console.log(res1);
+             wx.requestPayment({
+                nonceStr: res1.data.wc_pay_data.nonceStr,
+                package:  res1.data.wc_pay_data.package,
+                paySign:  res1.data.wc_pay_data.paySign,
+                timeStamp: res1.data.wc_pay_data.timeStamp,
+                signType:  res1.data.wc_pay_data.signType,
+                success(res){
+                  console.log(res.errMsg);
+                },fail(msg){
+                  console.log(msg.errMsg);
+                }
+              })
+          },fail(msg){
+            console.log(msg);
+            wx.showToast({
+              title: '网络错误',
+              icon:"none"
+            })
+          }
+        })
+    //   }
+    // })
+    // var arr={"returnCode":"SUCCESS","returnMsg":"成功","merchantId":"851110153110010","signMsg":"MIIHxgYJKoZIhvcNAQcCoIIHtzCCB7MCAQExDzANBglghkgBZQMEAgMFADCCAikGCSqGSIb3DQEHAaCCAhoEggIWeyJhcHBJZCI6Ind4NDMxNTM0ZDg5ZWFmNGEzOSIsInRpbWVTdGFtcCI6IjE1OTkyMDc5MjYiLCJub25jZVN0ciI6IjVjY2U5OWY5YzJjMDQzNDdhZTgxYTYwOTlkOTRkYjJiIiwicGFja2FnZSI6InByZXBheV9pZD13eDA0MTYyNTI1OTk5ODU1OWM5MmIzY2E1Yzk3NTY5MTAwMDAiLCJzaWduVHlwZSI6IlJTQSIsInBheVNpZ24iOiJWbmdoUGxZTnRqaDhndm8xV2hJOGJyOXVCa1J2alRaQk5DaXdrejl0S2pMaFV5S1c2aU9LZXRFc0VsTnkzL3RJVVNpOVpTQitiNUZxOTNGL082S1pkMnRpM05PYWxXM3FBUHZMbElodGllZFRwWU13NmxNRHBHR0hvTXJqU1JnR0tpOUxuUlFuUGZjb3dFZTBqQ1I3L3RqU0xtWnBDQ3daK2NzNHh3RTBDWVA2Wk9SVnFXWG8xMVVJKytzOTc2RDFYZHZ0VGNoa055OGRDOWZXZTVlcFFtRUs1S1h6aC9vTTMvNExOWWxxVXRudHFJOFRVeDdZNGVHVnJnaFV4YS9MZ2c3R3YycDJDUUd0QzNYMkFqS3dBOHNrTmJDQWdqamp2b2dka2VQMUowWVFuemJzcUZITm80bjljWkw3ZHcrNDRzVTlxVTE5T1Y1alRlcGN0WUJqM3c9PSJ9oIID3jCCA9owggLCoAMCAQICBRA0EGlHMA0GCSqGSIb3DQEBBQUAMFgxCzAJBgNVBAYTAkNOMTAwLgYDVQQKEydDaGluYSBGaW5hbmNpYWwgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkxFzAVBgNVBAMTDkNGQ0EgVEVTVCBPQ0ExMB4XDTE4MDkyMDAyMTgxOVoXDTIxMDkyMDAyMTgxOVowdzELMAkGA1UEBhMCQ04xFTATBgNVBAoTDENGQ0EgVEVTVCBDQTERMA8GA1UECxMITG9jYWwgUkExFTATBgNVBAsTDEluZGl2aWR1YWwtMTEnMCUGA1UEAxQeMDUxQHpoeHRlc3RfMDAxQFp6aHh0ZXN0XzAwMUAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1hCBZW06o2JL8ZsdYw69ZYJAHYoc/vMtZmU0vqjM1gBcQdSDxm1ifL76NKze6/MHyZ6P1goZyg86uXMRLXffs/pUUf9tEoTD/hQroJH/5ymnqaCqiYOkHKZeaR+e9M5iHFojFNEO2fag27fK6huE+7yM5n3c+zH17LYQkmu6/sqsQIaYfNcR5hoLcTNxd1OF/i3DrjWfTb8mPcxurB05jfWQtoPwJWc/1ErUuI43QoGR2/vaBVs0c5OUut6Y1vepgB1stU8YWvVUBuXPXkYBCdBB1fgd1dP1ma4KglIPkmHNx71VrCBKPI1Pji8Nk6ZW+oXIXp7s7QLgfNuPK7i+6QIDAQABo4GLMIGIMB8GA1UdIwQYMBaAFM9wnWHrnXwuuPfLAkD3CZ3+M3SAMDkGA1UdHwQyMDAwLqAsoCqGKGh0dHA6Ly91Y3JsLmNmY2EuY29tLmNuL1JTQS9jcmw2NTc0MC5jcmwwCwYDVR0PBAQDAgbAMB0GA1UdDgQWBBSBB04cex3rHJLX2Y4gWzb4mKxDUzANBgkqhkiG9w0BAQUFAAOCAQEADl3dWd6Csi7v3lLFiolbS58rf7PgGARsKLt/mY86fD9HH3tKOLjR2DWm939qykOx8taRHpdOKlizQm3p9FTgkor8D8EA71Lvfw7EClY96VRUkHOzCM5EvmDGS/aD8/uOchUewxGSqi5IVgSFxwRZzSELIVfJ8D6nwWiW8U96uOB6NeD8ikEGgTa4v+zlJ4Xl2SrNkwSY4JKbAkj/+HcMhDouS35oO04alraVX6pZAiM8dRP1UNw+OvY4PcXyazGPtPj31mWzmU5yHUqwo/PPspBjyswUD39XMQqfhZKkOhoEA6Lc1a5nq2iHxgbbdoFLYJ9+8mHq2wfTTvlGx5ubdDGCAYwwggGIAgEBMGEwWDELMAkGA1UEBhMCQ04xMDAuBgNVBAoTJ0NoaW5hIEZpbmFuY2lhbCBDZXJ0aWZpY2F0aW9uIEF1dGhvcml0eTEXMBUGA1UEAxMOQ0ZDQSBURVNUIE9DQTECBRA0EGlHMA0GCWCGSAFlAwQCAwUAMA0GCSqGSIb3DQEBAQUABIIBAEGMATK6qO8RmGrUI/mRtu5OlvEkDeD3yRLT6D6MzSbY5/zlOqIvhlZFRdexwWGl6mePm3ojZkVkm9JilicmmwGeTmBhO40Pv0RR3MHbjgeY0felWbOqm30r6JH93vMyjBJr6ySznb/eh8dMyQjI1AZPzdtWq52l7sP4zLK3owNjffYa1HgCz3vkMAp9YgjSQ0i0CMLVu6GHR8bMlv7kvJcFvXgARxi06AYMYOFBHHq+lwuxgRMz05XAKMuBEbFj1L1x8uCb+UPpk3HjSPQUvLErMR3uRVWuSuGaGHXvqZmgcIObTQViPboaTXe07kIPm3duu/Z4GD/3araujdgnjTU=","wc_pay_data":{"appId":"wx431534d89eaf4a39","timeStamp":"1599207926","nonceStr":"5cce99f9c2c04347ae81a6099d94db2b","package":"prepay_id=wx041625259998559c92b3ca5c9756910000","signType":"RSA","paySign":"VnghPlYNtjh8gvo1WhI8br9uBkRvjTZBNCiwkz9tKjLhUyKW6iOKetEsElNy3/tIUSi9ZSB+b5Fq93F/O6KZd2ti3NOalW3qAPvLlIhtiedTpYMw6lMDpGGHoMrjSRgGKi9LnRQnPfcowEe0jCR7/tjSLmZpCCwZ+cs4xwE0CYP6ZORVqWXo11UI++s976D1XdvtTchkNy8dC9fWe5epQmEK5KXzh/oM3/4LNYlqUtntqI8TUx7Y4eGVrghUxa/Lgg7Gv2p2CQGtC3X2AjKwA8skNbCAgjjjvogdkeP1J0YQnzbsqFHNo4n9cZL7dw+44sU9qU19OV5jTepctYBj3w=="}}
+   
+    // wx.requestPayment({
+    //   nonceStr: arr.wc_pay_data.nonceStr,
+    //   package: arr.wc_pay_data.package,
+    //   paySign: arr.wc_pay_data.paySign,
+    //   timeStamp:arr.wc_pay_data.timeStamp,
+    //   signType: arr.wc_pay_data.signType,
+    //   success(res){
+    //     console.log(res);
+    //   },fail(msg){
+    //     console.log(msg);
+    //   }
+    // })
+      
   },
+  // aa(e){
+  //   console.log(e);
+  //   // wx.login({
+  //   //   success(res){
+  //   //     console.log(res);
+  //   //   }
+  //   // })
+   
+  // },
   // 点击提交并支付
   submit(){
     var testTel=/^1[3456789]\d{9}$/;
@@ -138,6 +196,15 @@ Page({
       }
     });
     that.Initialization(that.data.pid);//初始化右侧显示默认页面
+    that.login();//默认登录
+  },
+  login(){
+    wx.login({
+      success(res){//获取code
+        console.log(res);
+        that.data.code=res.code;
+      }
+    })
   },
   onReady(){
     // 页面加载完之后，将左侧的列表背景色动态的渲染
@@ -204,7 +271,8 @@ Page({
       newPrice:parseFloat(con.newPrice),
       limitNum:con.limitNum,
       number:1,
-      youHui:youHui
+      youHui:youHui,
+      add:con.newPrice
     })
   },
   // 点击左侧列表，切换右侧数据

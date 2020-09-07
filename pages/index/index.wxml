@@ -96,7 +96,10 @@
       <view>合计：{{add}}元</view>
       <view>优惠{{youHui}}元</view>
     </view>
-    <view class="btn" bindtap="goPay">去付款</view>
+    <!-- <view class="btn">去付款</view> -->
+    <!-- bindtap="goPay" -->
+    <!-- open-type="getUserInfo" bindgetuserinfo="aa" -->
+    <button class="btn" bindtap="goPay">去付款</button>
   </view>
   <!-- 点击付款，弹出 -->
   <view class="paymentBox" wx:if="{{isTan}}">
