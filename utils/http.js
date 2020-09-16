@@ -1,5 +1,5 @@
 // 公共的URL路径
-var baseUrl='http://10.6.4.154:8081/'
+var baseUrl='https://api.zihexin.net/'
 class HTTP {
   // 这是类中的一种方法
 request(params) {

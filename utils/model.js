@@ -2,11 +2,11 @@ import { HTTP } from './http.js'//引入http文件中的class类
 const _HTTP = new HTTP()
 
 class IndexModel {//用class类进行封装
-// 商铺列表，单个的请求接口
-dataList (data) {
+// 支付接口
+zf (data) {
  return _HTTP.request({
    method: 'get',
-   url: 'hzf/sales/commandBrandList?userId=4c28364422dccebc29247455a7ce0811',
+   url: 'weChat/testpay',
    data:data
  })
 }
