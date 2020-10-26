@@ -3,6 +3,7 @@
 const app = getApp(). globalData.http;
 var that,timer;
 import {IndexModel} from '../../utils/model';
+import { add,jian,accMul} from '../../utils/computed';
 var http=new IndexModel()
 Page({
   data: {
@@ -52,7 +53,7 @@ Page({
     //     title: '有token值',
     //   })
     // }
-  //   console.log('111')
+    console.log(that.data.code)
    var res=await http.zf({
       code:that.data.code,
       amount:that.data.add
@@ -202,7 +203,7 @@ Page({
         // console.log(res.windowHeight) // 获取可使用窗口高度
         let windowHeight = (res.windowHeight * (750 / res.windowWidth)); //将高度乘以换算后的该设备的rpx与px的比例
         // console.log(windowHeight) //最后获得转化后得rpx单位的窗口高度
-        var he=windowHeight-132-10-110;
+        var he=windowHeight-132-4-110;
         that.setData({
           he:he+'rpx'
         })
@@ -259,9 +260,11 @@ Page({
   //加、减的时候的公共的数据
   numCom(k){
     // 合计
-    var num=((k*parseFloat(that.data.newPrice)*1000)/1000).toFixed(2);
+    var num = accMul(k,Number(that.data.newPrice)).toFixed(2);
+    // var num=((k*parseFloat(that.data.newPrice)*1000)/1000).toFixed(2);
     // 优惠
-    var youHui=((((parseFloat(that.data.oldPrice*1000)-parseFloat(that.data.newPrice*1000))/1000))*k).toFixed(2);
+    var youHui = accMul(jian(Number(that.data.oldPrice),Number(that.data.newPrice)),Number(k)).toFixed(2);
+    // var youHui=((((parseFloat(that.data.oldPrice*1000)-parseFloat(that.data.newPrice*1000))/1000))*k).toFixed(2);
     // console.log(youHui)
     that.setData({
       number:k,
@@ -277,7 +280,8 @@ Page({
     let con=e.currentTarget.dataset.content;
     // console.log(con)
     // that.youHui();
-    var youHui=(parseInt(con.oldPrice*1000)-parseInt(con.newPrice*1000))/1000;
+    // var youHui=(parseInt(con.oldPrice*1000)-parseInt(con.newPrice*1000))/1000;
+  let youHui = jian(Number(con.oldPrice),Number(con.newPrice)).toFixed(2);
     that.setData({
       num:index,
       oldPrice:con.oldPrice,
@@ -312,7 +316,8 @@ Page({
        limitNum=v.goodsList[0].limitNum;   
    })
    //点击左侧的时候，显示第一个优惠金额
-   youHui=((parseFloat(oldPrice*1000)-parseFloat(newPrice*1000))/1000).toFixed(2);
+  //  youHui=((parseFloat(oldPrice*1000)-parseFloat(newPrice*1000))/1000).toFixed(2);
+  youHui = jian(Number(oldPrice),Number(newPrice)).toFixed(2);
    that.setData({
     pid:k,
     arr:rightList,
